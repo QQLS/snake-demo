@@ -1,0 +1,81 @@
+// 定义背景色
+@bg-color: #b7d4a8;
+
+// 清理所有预置属性
+* {
+    margin: 0;
+    padding: 0;
+
+    // 改变盒子模型的计算方式, 以边框为准
+    box-sizing: border-box;
+}
+
+.container {
+    width: 360px;
+    height: 420px;
+    margin: 50px auto;
+    border: 10px solid #000;
+    border-radius: 30px;
+    background-color: @bg-color;
+
+    // 统一设置字体
+    font: bold 20px 'Courier';
+
+    // 开启弹性布局, 默认主轴方向是 x 轴
+    display: flex;
+    // 设置主轴方向为 Y 轴
+    flex-direction: column;
+
+    // 设置主轴方向空的内容环绕
+    justify-content: space-around;
+    // 设置辅轴方向居中
+    align-items: center;
+
+    .staging {
+        width: 304px;
+        height: 304px;
+        border: 2px solid #000;
+        // 父元素开启相对定位
+        position: relative;
+
+        .snake {
+            // 开启相对定位
+            position: relative;
+            &>div {
+                // 开启绝对定位
+                position: absolute;
+
+                background-color: #000;
+                width: 10px;
+                height: 10px;
+                border: 1px solid @bg-color;
+            }
+        }
+
+        .random-body {
+            width: 10px;
+            height: 10px;
+
+            // 子元素开启绝对定位(只有开启定位设置位置才会起作用)
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            display: flex;
+            flex-wrap: wrap;
+
+            .random-body-part {
+                background-color: #000;
+                width: 5px;
+                height: 5px;
+                transform: rotate(45deg);
+            }
+        }
+    }
+
+    .score-panel {
+        width: 300px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+}
